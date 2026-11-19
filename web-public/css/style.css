@@ -1,0 +1,1435 @@
+
+/* =====================================================
+   EDALAT SPORTS CLUB
+   Main Stylesheet
+   Version: 2.0.0
+   Pages: index.html | about.html
+===================================================== */
+
+
+/* =====================================================
+   01. CUSTOM FONTS
+===================================================== */
+
+@font-face {
+    font-family: "Doran";
+    src: url("../assets/fonts/Doran-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Doran";
+    src: url("../assets/fonts/Doran-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Doran";
+    src: url("../assets/fonts/Doran-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Doran";
+    src: url("../assets/fonts/Doran-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Doran";
+    src: url("../assets/fonts/Doran-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Doran";
+    src: url("../assets/fonts/Doran-ExtraBold.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* =====================================================
+   02. ROOT VARIABLES
+===================================================== */
+
+:root {
+
+    /* Fonts */
+    --font-main: "Doran", Tahoma, sans-serif;
+
+    /* Primary Colors */
+    --color-primary: #102b50;
+    --color-primary-light: #1b416e;
+    --color-primary-dark: #081a31;
+
+    /* Secondary Colors */
+    --color-secondary: #d92332;
+    --color-secondary-dark: #ae1725;
+
+    /* Neutral Colors */
+    --color-black: #101318;
+    --color-dark: #1c222c;
+    --color-white: #ffffff;
+    --color-light: #f4f6f9;
+    --color-gray: #737b87;
+    --color-border: #e1e5eb;
+
+    /* Layout */
+    --container-width: 1200px;
+
+    /* Effects */
+    --transition: 0.3s ease;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 14px 35px rgba(0, 0, 0, 0.14);
+
+    /* Radius */
+    --radius: 12px;
+    --radius-large: 20px;
+
+}
+
+
+/* =====================================================
+   03. RESET & GLOBAL STYLES
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: var(--font-main);
+    font-weight: 400;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    line-height: 1.9;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    font-weight: 800;
+    line-height: 1.8;
+}
+
+p {
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 4px;
+}
+
+section {
+    padding: 90px 0;
+}
+
+section[id] {
+    scroll-margin-top: 100px;
+}
+
+
+/* =====================================================
+   04. CONTAINER
+===================================================== */
+
+.container {
+    width: min(92%, var(--container-width));
+    margin-inline: auto;
+}
+
+
+/* =====================================================
+   05. BUTTONS
+===================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 27px;
+
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: 2px solid var(--color-secondary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   06. HEADER & NAVIGATION
+===================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.site-header > .container {
+    min-height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.logo:hover {
+    color: var(--color-secondary);
+}
+
+/* Navigation */
+
+.main-navigation {
+    margin-inline: auto;
+}
+
+.main-navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.main-navigation a {
+    position: relative;
+    display: block;
+
+    padding: 10px 0;
+
+    color: #e3e9f2;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.main-navigation a::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--color-secondary);
+    transition: var(--transition);
+}
+
+.main-navigation a:hover,
+.main-navigation a[aria-current="page"] {
+    color: var(--color-white);
+}
+
+.main-navigation a:hover::after,
+.main-navigation a[aria-current="page"]::after {
+    width: 100%;
+}
+
+
+/* =====================================================
+   07. SECTION HEADINGS
+===================================================== */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading > span,
+.section-label {
+    display: inline-block;
+
+    color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    color: var(--color-primary);
+    font-size: clamp(24px, 4vw, 35px);
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    max-width: 700px;
+    margin-inline: auto;
+    color: var(--color-gray);
+}
+
+
+/* =====================================================
+   08. HOME PAGE - HERO
+===================================================== */
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 580px;
+
+    color: var(--color-white);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(8, 26, 49, 0.96),
+            rgba(16, 43, 80, 0.94)
+        );
+}
+
+.hero-section::before {
+    content: "";
+
+    position: absolute;
+    top: -180px;
+    right: -100px;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    opacity: 0.08;
+}
+
+.hero-section > .container {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 60px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-subtitle {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: #ff6874;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.hero-content h1 {
+    font-size: clamp(32px, 5vw, 54px);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    color: var(--color-secondary);
+}
+
+.hero-content p {
+    max-width: 520px;
+
+    margin-bottom: 30px;
+
+    color: #d0d8e5;
+    font-size: 16px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 390px;
+
+    object-fit: cover;
+
+    border: 4px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =====================================================
+   09. HOME PAGE - ABOUT
+===================================================== */
+
+.about-section {
+    background-color: var(--color-white);
+}
+
+.about-section .container > p {
+    max-width: 850px;
+
+    margin: 0 auto 25px;
+
+    color: #555e6b;
+    font-size: 16px;
+    text-align: center;
+}
+
+.about-section .container > a {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+.about-section .container > a:hover {
+    color: var(--color-secondary-dark);
+}
+
+
+/* =====================================================
+   10. HOME PAGE - SPORTS
+===================================================== */
+
+.sports-section {
+    background-color: var(--color-light);
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    margin-bottom: 35px;
+}
+
+.sport-card {
+    overflow: hidden;
+
+    background-color: var(--color-white);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.sport-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.sport-card > img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.sport-card-content {
+    padding: 25px;
+}
+
+.sport-card-content > span {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: var(--color-secondary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sport-card-content h3 {
+    margin-bottom: 12px;
+
+    color: var(--color-primary);
+    font-size: 20px;
+}
+
+.sport-card-content p {
+    margin-bottom: 18px;
+
+    color: var(--color-gray);
+    font-size: 14px;
+}
+
+.sport-card-content a {
+    color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sport-card-content a:hover {
+    color: var(--color-secondary-dark);
+}
+
+.sport-card.featured {
+    border-bottom: 4px solid var(--color-secondary);
+}
+
+.sports-section > .container > a:last-child {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   11. HOME PAGE - COACHES
+===================================================== */
+
+.coaches-section {
+    background-color: var(--color-white);
+}
+
+.coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.coach-card {
+    overflow: hidden;
+
+    padding-bottom: 25px;
+
+    background-color: var(--color-light);
+    border-radius: var(--radius);
+
+    text-align: center;
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+}
+
+.coach-card:hover {
+    transform: translateY(-6px);
+}
+
+.coach-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.coach-card h3 {
+    margin-top: 20px;
+    color: var(--color-primary);
+}
+
+.coach-card p {
+    color: var(--color-gray);
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   12. HOME PAGE - CLASSES
+===================================================== */
+
+.classes-section {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+}
+
+.classes-section .section-heading h2 {
+    color: var(--color-white);
+}
+
+.classes-section .section-heading p,
+.classes-section > .container > p {
+    color: #d0d8e5;
+}
+
+.classes-section > .container > p {
+    margin-bottom: 25px;
+}
+
+.classes-section > .container > a {
+    display: inline-block;
+
+    padding: 11px 25px;
+
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.classes-section > .container > a:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+
+/* =====================================================
+   13. HOME PAGE - NEWS
+===================================================== */
+
+.news-section {
+    background-color: var(--color-light);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.news-card {
+    overflow: hidden;
+
+    padding-bottom: 20px;
+
+    background-color: var(--color-white);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-card h3,
+.news-card p,
+.news-card a {
+    margin-inline: 20px;
+}
+
+.news-card h3 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.news-card p {
+    margin-bottom: 15px;
+    color: var(--color-gray);
+    font-size: 14px;
+}
+
+.news-card a {
+    color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.news-section > .container > a:last-child {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   14. ABOUT PAGE - HERO
+===================================================== */
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 350px;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(8, 26, 49, 0.97),
+            rgba(16, 43, 80, 0.93)
+        );
+
+    color: var(--color-white);
+}
+
+.page-hero::before {
+    content: "";
+
+    position: absolute;
+    top: -150px;
+    left: -100px;
+
+    width: 350px;
+    height: 350px;
+
+    border: 45px solid rgba(217, 35, 50, 0.15);
+    border-radius: 50%;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 750px;
+}
+
+.page-hero-content > span {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    color: #ff6874;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.page-hero-content h1 {
+    margin-bottom: 15px;
+
+    font-size: clamp(32px, 5vw, 48px);
+}
+
+.page-hero-content h1 span {
+    color: var(--color-secondary);
+}
+
+.page-hero-content p {
+    max-width: 600px;
+
+    color: #d0d8e5;
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   15. ABOUT PAGE - INTRODUCTION
+===================================================== */
+
+.about-introduction {
+    background-color: var(--color-white);
+}
+
+.about-introduction > .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 65px;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image::after {
+    content: "";
+
+    position: absolute;
+    z-index: 0;
+
+    width: 65%;
+    height: 65%;
+
+    right: -15px;
+    bottom: -15px;
+
+    border-radius: var(--radius-large);
+    background-color: var(--color-secondary);
+    opacity: 0.15;
+}
+
+.about-image img {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 420px;
+
+    object-fit: cover;
+
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow);
+}
+
+.about-content h2 {
+    margin-bottom: 20px;
+
+    color: var(--color-primary);
+    font-size: clamp(25px, 4vw, 35px);
+}
+
+.about-content p {
+    margin-bottom: 18px;
+
+    color: #555e6b;
+    font-size: 15px;
+    text-align: justify;
+}
+
+
+/* =====================================================
+   16. ABOUT PAGE - KYOKUSHIN
+===================================================== */
+
+.kyokushin-section {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.kyokushin-section > .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 60px;
+}
+
+.kyokushin-content h2 {
+    margin-bottom: 20px;
+
+    color: var(--color-white);
+    font-size: clamp(27px, 4vw, 36px);
+}
+
+.kyokushin-content p {
+    margin-bottom: 18px;
+
+    color: #cbd5e3;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.kyokushin-content .btn {
+    margin-top: 15px;
+}
+
+.kyokushin-image img {
+    width: 100%;
+    height: 400px;
+
+    object-fit: cover;
+
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =====================================================
+   17. ABOUT PAGE - OTHER SPORTS
+===================================================== */
+
+.other-sports-section {
+    background-color: var(--color-light);
+}
+
+.other-sports-content {
+    max-width: 850px;
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+.other-sports-content p {
+    margin-bottom: 30px;
+
+    color: #555e6b;
+    font-size: 16px;
+    line-height: 2.2;
+}
+
+
+/* =====================================================
+   18. ABOUT PAGE - VALUES
+===================================================== */
+
+.values-section {
+    background-color: var(--color-white);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.value-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 30px 22px;
+
+    background-color: var(--color-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+
+    transition: var(--transition);
+}
+
+.value-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 4px;
+    height: 0;
+
+    background-color: var(--color-secondary);
+    transition: var(--transition);
+}
+
+.value-card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-hover);
+}
+
+.value-card:hover::before {
+    height: 100%;
+}
+
+.value-card h3 {
+    margin-bottom: 12px;
+
+    color: var(--color-primary);
+    font-size: 19px;
+}
+
+.value-card p {
+    color: var(--color-gray);
+    font-size: 14px;
+    line-height: 2;
+}
+
+
+/* =====================================================
+   19. CALL TO ACTION
+===================================================== */
+
+.cta-section {
+    background:
+        linear-gradient(
+            120deg,
+            var(--color-secondary-dark),
+            var(--color-secondary)
+        );
+
+    color: var(--color-white);
+    text-align: center;
+}
+
+.cta-section h2 {
+    margin-bottom: 15px;
+    font-size: clamp(23px, 4vw, 35px);
+}
+
+.cta-section p {
+    margin-bottom: 25px;
+}
+
+.cta-section .btn-primary {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+    color: var(--color-secondary-dark);
+}
+
+.cta-section .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+
+/* =====================================================
+   20. FOOTER
+===================================================== */
+
+.site-footer {
+    padding-top: 65px;
+
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.site-footer > .container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+
+    gap: 40px;
+}
+
+.site-footer h2,
+.site-footer h3 {
+    margin-bottom: 18px;
+}
+
+.site-footer h2 {
+    font-size: 21px;
+}
+
+.site-footer h3 {
+    position: relative;
+
+    padding-bottom: 10px;
+
+    font-size: 17px;
+}
+
+.site-footer h3::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 45px;
+    height: 2px;
+
+    background-color: var(--color-secondary);
+}
+
+.footer-about p {
+    color: #c0ccdc;
+    font-size: 14px;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #c0ccdc;
+    font-size: 14px;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #ff6874;
+}
+
+.footer-contact p,
+.footer-contact address {
+    margin-bottom: 12px;
+
+    color: #c0ccdc;
+    font-size: 14px;
+
+    font-style: normal;
+}
+
+.footer-contact a {
+    color: var(--color-white);
+}
+
+.footer-contact a[dir="ltr"] {
+    display: inline-block;
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: #aebbcf;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+/* =====================================================
+   21. TABLET RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+
+    .site-header > .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px 0;
+    }
+
+    .main-navigation {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .main-navigation ul {
+        justify-content: center;
+        gap: 20px;
+        min-width: max-content;
+    }
+
+    .hero-section > .container {
+        gap: 30px;
+    }
+
+    .hero-image img {
+        height: 320px;
+    }
+
+    .sports-grid,
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .site-footer > .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-introduction > .container,
+    .kyokushin-section > .container {
+        gap: 35px;
+    }
+
+    .about-image img,
+    .kyokushin-image img {
+        height: 340px;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   22. MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 65px 0;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    /* Header */
+
+    .site-header > .container {
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .site-header .btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .main-navigation ul {
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 5px 3px 10px;
+    }
+
+    .main-navigation a {
+        font-size: 12px;
+    }
+
+    /* Home Hero */
+
+    .hero-section {
+        padding: 65px 0;
+    }
+
+    .hero-section > .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-inline: auto;
+    }
+
+    .hero-content p {
+        margin-inline: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        height: 250px;
+    }
+
+    /* Home Cards */
+
+    .sports-grid,
+    .coaches-grid,
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sport-card > img {
+        height: 230px;
+    }
+
+    .coach-card img {
+        height: 260px;
+    }
+
+    /* About Hero */
+
+    .page-hero {
+        min-height: 300px;
+        padding: 65px 0;
+    }
+
+    .page-hero-content {
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    /* About Introduction */
+
+    .about-introduction > .container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-image img {
+        height: 270px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .about-content p {
+        text-align: right;
+    }
+
+    /* Kyokushin */
+
+    .kyokushin-section > .container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .kyokushin-content {
+        text-align: center;
+    }
+
+    .kyokushin-content p {
+        text-align: right;
+    }
+
+    .kyokushin-image img {
+        height: 270px;
+    }
+
+    /* Other Sports */
+
+    .other-sports-content p {
+        font-size: 14px;
+    }
+
+    /* Values */
+
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .value-card {
+        padding: 25px 20px;
+    }
+
+    /* Footer */
+
+    .site-footer > .container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        grid-column: auto;
+    }
+
+}
+
+
+/* =====================================================
+   23. SMALL MOBILE DEVICES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .logo img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .site-header .btn {
+        padding: 7px 12px;
+        font-size: 11px;
+    }
+
+    .hero-content h1 {
+        font-size: 29px;
+    }
+
+    .btn {
+        padding: 10px 17px;
+        font-size: 12px;
+    }
+
+}
+
+
+/* =====================================================
+   24. REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
